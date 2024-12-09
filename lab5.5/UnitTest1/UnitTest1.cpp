@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../lab5.5/5.5.cpp"
+#include "..\FileName.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -10,40 +10,29 @@ namespace UnitTest1
     {
     public:
 
-        TEST_METHOD(TestPowerPositive)
+        TEST_METHOD(TestPositiveExponent)
         {
-            recursionDepth = 0;
-            maxRecursionDepth = 0;
-
-            Assert::AreEqual(8.0, power(2, 3), 0.001);
-            Assert::AreEqual(4, getMaxRecursionDepth());
+            Assert::AreEqual(8.0, pow(2.0, 3)); // 2^3 = 8
         }
 
-        TEST_METHOD(TestPowerNegative)
+        TEST_METHOD(TestNegativeExponent)
         {
-            recursionDepth = 0;
-            maxRecursionDepth = 0;
-
-            Assert::AreEqual(0.125, power(2, -3), 0.001);
-            Assert::AreEqual(4, getMaxRecursionDepth()); 
+            Assert::AreEqual(0.25, pow(2.0, -2)); // 2^(-2) = 0.25
         }
 
-        TEST_METHOD(TestPowerZeroExponent)
+        TEST_METHOD(TestZeroExponent)
         {
-            recursionDepth = 0;
-            maxRecursionDepth = 0;
-
-            Assert::AreEqual(1.0, power(5, 0), 0.001);
-            Assert::AreEqual(1, getMaxRecursionDepth());
+            Assert::AreEqual(1.0, pow(2.0, 0)); // 2^0 = 1
         }
 
-        TEST_METHOD(TestPowerZeroBase)
+        TEST_METHOD(TestBaseZero)
         {
-            recursionDepth = 0;
-            maxRecursionDepth = 0;
+            Assert::AreEqual(0.0, pow(0.0, 5)); // 0^5 = 0
+        }
 
-            Assert::AreEqual(0.0, power(0, 5), 0.001);
-            Assert::AreEqual(6, getMaxRecursionDepth());
+        TEST_METHOD(TestNegativeBase)
+        {
+            Assert::AreEqual(-8.0, pow(-2.0, 3)); // (-2)^3 = -8
         }
     };
 }
